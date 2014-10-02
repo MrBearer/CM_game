@@ -470,7 +470,7 @@ TerrainCollider:
   m_GameObject: {fileID: 1229496448}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 104037754a49c194280b81ff6a32dc3c, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 4942d814ca86bfe4cb875d812964356d, type: 2}
   m_CreateTreeColliders: 1
 --- !u!114 &1229496450
 MonoBehaviour:
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 12000, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TerrainData: {fileID: 15600000, guid: 104037754a49c194280b81ff6a32dc3c, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 4942d814ca86bfe4cb875d812964356d, type: 2}
   m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
