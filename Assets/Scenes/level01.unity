@@ -84,7 +84,6 @@ GameObject:
   - 4: {fileID: 176017019}
   - 114: {fileID: 176017020}
   - 114: {fileID: 176017021}
-  - 114: {fileID: 176017022}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: CameraPivot
@@ -104,6 +103,7 @@ Transform:
   m_Children:
   - {fileID: 783320399}
   m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!114 &176017020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,25 +182,6 @@ MonoBehaviour:
   offset:
   - {x: 0, y: 0, z: 0}
   cam: {fileID: 666609046}
---- !u!114 &176017022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 176017018}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e8a480076ba9143bc99113b8cfb9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  start: {x: 0, y: 0}
-  end: {x: 1000, y: 1000}
-  terrainHeight: 0
-  rayHeightOffset: 50
-  numOfNodes: 200
-  gizmoCubeSize: 1
-  drawGizmos: 0
-  graphUpdateFrequency: 0
 --- !u!1 &666609042
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +249,11 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
 --- !u!4 &666609047
 Transform:
   m_ObjectHideFlags: 0
@@ -281,6 +265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 783320399}
+  m_RootOrder: 0
 --- !u!1 &783320398
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +293,7 @@ Transform:
   m_Children:
   - {fileID: 666609047}
   m_Father: {fileID: 176017019}
+  m_RootOrder: 0
 --- !u!1 &915842996
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,9 +331,8 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!136 &915842998
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -379,72 +364,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &915843001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 915842996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9883c74c73d364d8869cae4f01a0e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7833eca4f9a3c4a119943a3ef09cdfc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: []
-  PathType: 0
-  JS: 0
---- !u!1 &1189279033
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-  m_PrefabInternal: {fileID: 1243068404}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1189279035}
-  - 114: {fileID: 1189279034}
-  m_Layer: 0
-  m_Name: Pathfinder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1189279034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: efdf155e29b063e48a1a315326175481,
-    type: 2}
-  m_PrefabInternal: {fileID: 1243068404}
-  m_GameObject: {fileID: 1189279033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c4acf42fa4d81a498faec7fa36593cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tilesize: 1
-  MaxFalldownHeight: 0
-  ClimbLimit: 0
-  HeuristicAggression: 0
-  HighestPoint: 100
-  LowestPoint: -50
-  MapStartPosition: {x: 0, y: 0}
-  MapEndPosition: {x: 1000, y: 1000}
-  DisallowedTags: []
-  IgnoreTags: []
-  MoveDiagonal: 1
-  DrawMapInEditor: 0
-  CheckFullTileSize: 0
---- !u!4 &1189279035
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-  m_PrefabInternal: {fileID: 1243068404}
-  m_GameObject: {fileID: 1189279033}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.0233459, y: 0, z: 29.6775856}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &1229496448
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +428,7 @@ MonoBehaviour:
   m_LightmapIndex: -1
   m_LightmapSize: 1024
   m_DrawTreesAndFoliage: 1
+  m_CollectDetailPatches: 1
   m_MaterialTemplate: {fileID: 0}
 --- !u!4 &1229496451
 Transform:
@@ -509,58 +441,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1001 &1243068404
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 40.0233459
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 29.6775856
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: Tilesize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: MapEndPosition.x
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-      propertyPath: MapEndPosition.y
-      value: 1000
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: efdf155e29b063e48a1a315326175481, type: 2}
-  m_RootGameObject: {fileID: 1189279033}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
+  m_RootOrder: 3
 --- !u!1 &1576895789
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,3 +504,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 1
