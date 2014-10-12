@@ -29,7 +29,6 @@ public class Building : MonoBehaviour {
 			RaycastHit hit;
 			if(Physics.Raycast(ray,out hit))
 			{
-				Debug.Log(hit.transform.position);
 				if (hit.transform.tag == "Terrain")
 				{
 					Vector3 newPos = hit.point + offset[item];
@@ -40,6 +39,9 @@ public class Building : MonoBehaviour {
 			}
 			if(colliding == 0 && Input.GetMouseButton(0))
 			{
+				Placing pg = ghost.GetComponent<Placing>();
+				pg.isGhost = false;
+
 				isSelected = false;
 			}
 			if(Input.GetMouseButton(1))
