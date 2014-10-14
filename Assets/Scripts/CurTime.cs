@@ -9,6 +9,7 @@ public class CurTime : MonoBehaviour {
 	public double tfLengthSec = 60;
 	public double midnightSunRotation = 180;
 	public double maxSunIntensity = 0.35;
+	public bool twilight;
 	double startTime;
 	double curSunHeight;
 	double curSunRotation;
@@ -18,6 +19,7 @@ public class CurTime : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		twilight = false;
 		maxSunHeight *= 2;
 		isDay = true;
 		curSunHeight = maxSunHeight;
@@ -28,7 +30,7 @@ public class CurTime : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (curDayTime/dayLength);
+		//Debug.Log (curDayTime/dayLength);
 		if (curDayTime < curDayLength)
 		{
 			if (isDay)
@@ -38,12 +40,17 @@ public class CurTime : MonoBehaviour {
 					curSunHeight = maxSunHeight*(curDayTime/dayLength);
 					if (curDayTime/dayLength <= 0.1)
 						sun.intensity = (float)((curDayTime/dayLength)*10*maxSunIntensity);
+					else
+						twilight = false;
 				}	
 				else
 				{
 					curSunHeight = maxSunHeight*(1 - curDayTime/dayLength);
 					if (curDayTime/dayLength >= 0.9)
+					{
+						twilight = true;
 						sun.intensity = (float)((1 - curDayTime/dayLength)*10*maxSunIntensity);
+					}
 				}
 			}
 			curDayTime += Time.deltaTime;
