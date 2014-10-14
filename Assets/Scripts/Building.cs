@@ -12,17 +12,19 @@ public class Building : MonoBehaviour {
 	private Vector3 oldPos;
 	private bool grid;
 	private int colliding;
+	public static int bMode;
 
 	// Use this for initialization
 	void Start () {
 		isSelected = false;
 		grid = true;
 		colliding = 0;
+		bMode = 0;
 	}
 
 	// Update is called once per frame
 	void Update () {
-
+		//Debug.Log(colliding);
 		if (isSelected)
 		{
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -41,13 +43,26 @@ public class Building : MonoBehaviour {
 			{
 				Placing pg = ghost.GetComponent<Placing>();
 				pg.isGhost = false;
-
+				bMode = 0;
 				isSelected = false;
 			}
 			if(Input.GetMouseButton(1))
 			{
 				isSelected = false;
 				Destroy(ghost);
+				bMode = 0;
+			}
+		}
+		if (bMode == 2)
+		{
+			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if(Physics.Raycast(ray,out hit))
+			{
+				if (hit.transform.tag == "CanDestroy" && Input.GetMouseButton(0))
+				{
+					hit.transform.gameObject.SendMessage("SelfDestroy");
+				}
 			}
 		}
 		if (Input.GetKeyUp (KeyCode.G))
@@ -63,6 +78,7 @@ public class Building : MonoBehaviour {
 			{
 				item = i;
 				isSelected = true;
+				bMode = 1;
 				Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
 				if(Physics.Raycast(ray,out hit))
@@ -72,6 +88,15 @@ public class Building : MonoBehaviour {
 			}
 			i++;
 		}
+		if (GUI.Button(new Rect(10, Screen.height-80, 80, 30), "Remove"))
+		{
+			bMode = 2;
+			if (isSelected)
+			{
+				isSelected = false;
+				Destroy(ghost);
+			}
+		}
 	}
 
 	void Colliding (bool enter)
@@ -80,6 +105,6 @@ public class Building : MonoBehaviour {
 			colliding++;
 		else
 			colliding--;
-		Debug.Log(colliding);
+		//Debug.Log(colliding);
 	}
 }

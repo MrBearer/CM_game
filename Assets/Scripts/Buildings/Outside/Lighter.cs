@@ -37,7 +37,6 @@ public class Lighter : MonoBehaviour {
 				Electricity.DeleteConsumer(ID);
 				added = false;
 			}
-
 			if (added && Electricity.GetStatus(ID))
 			{
 				hasEnergy = true;
@@ -52,8 +51,20 @@ public class Lighter : MonoBehaviour {
 			}
 			if (hasEnergy && ct.twilight && !lamp.enabled)
 				lamp.enabled = true;
+			if (!hasEnergy && ct.twilight && lamp.enabled)
+				lamp.enabled = false;
 			if (!ct.twilight && lamp.enabled)
 				lamp.enabled = false;
+		}
+	}
+
+	void SelfDestroy ()
+	{
+		pl.isGhost = true;
+		if (added)
+		{
+			Electricity.DeleteConsumer(ID);
+			Destroy(transform.gameObject);
 		}
 	}
 }

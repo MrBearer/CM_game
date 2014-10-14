@@ -16,7 +16,7 @@ public class ColliderMessenger : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		buildingCameraPivot.gameObject.SendMessage("Colliding", true);
-		Debug.Log(other.name);
+		//Debug.Log(other.name);
 	}
 	
 	void OnTriggerExit(Collider other) {

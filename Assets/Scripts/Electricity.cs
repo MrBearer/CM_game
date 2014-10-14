@@ -33,7 +33,7 @@ public class Electricity : MonoBehaviour {
 
 			foreach (var item in needs.OrderByDescending(key => key.Value))
 			{
-				Debug.Log(item.Value);
+				//Debug.Log(item.Value);
 				if (supply >= item.Value)
 				{
 					supply -= item.Value;

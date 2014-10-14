@@ -15,8 +15,8 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: cube
-  m_TagString: Untagged
+  m_Name: EnSource
+  m_TagString: CanDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
