@@ -337,8 +337,8 @@ MonoBehaviour:
       cameraRotationRate: {x: 100, y: 100}
     zoom:
       invertZoom: 0
-      defaultZoom: 15
-      minZoom: 10
+      defaultZoom: 10
+      minZoom: 5
       maxZoom: 20
       zoomRate: 400
       constZoomRate: 0
@@ -358,8 +358,12 @@ MonoBehaviour:
   - {fileID: 100000, guid: dd81a1c98e8d6374aab5f7c2185cd224, type: 2}
   - {fileID: 100000, guid: b087174335e73db438838c0c39ebc7bc, type: 2}
   - {fileID: 100002, guid: 94a20bc39b8c0c44aa896db72233de87, type: 2}
+  - {fileID: 100000, guid: dbe0b9c11664f804580e0b1254fab512, type: 2}
+  - {fileID: 100000, guid: 459627618de1d164898eac56f4e22747, type: 2}
   offset:
   - {x: 0, y: -.400000006, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -863,7 +867,7 @@ GameObject:
   - 114: {fileID: 666609048}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1638,8 +1642,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 1576895790}
   maxSunHeight: 80
-  dayLength: 60
-  tfLengthSec: 120
+  dayLength: 15
+  tfLengthSec: 30
   midnightSunRotation: 180
   maxSunIntensity: .5
   twilight: 0

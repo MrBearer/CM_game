@@ -253,6 +253,7 @@ MonoBehaviour:
   lamp: {fileID: 10800000}
   maxIntensity: 4
   e_icon: {fileID: 100006}
+  e_icon2d: {fileID: 2800000, guid: dcd3eb227b8d0474d97ba1264a501f00, type: 3}
   energyNeeded: 10
   hasEnergy: 0
 --- !u!114 &11400004
