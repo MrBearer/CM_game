@@ -33,12 +33,12 @@ public class Lighter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!pl.isGhost)
-		{
+		{/*
 			if (!saved)
 			{
 				save.save("outB",ID,transform.position);
 				saved = true;
-			}
+			}*/
 			if (!added && ct.twilight)
 			{
 				Electricity.AddConsumer(energyNeeded,ID);
@@ -52,14 +52,14 @@ public class Lighter : MonoBehaviour {
 			if (added && Electricity.GetStatus(ID))
 			{
 				hasEnergy = true;
-				MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
-				mr.enabled = false;
+				//MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
+				//mr.enabled = false;
 			}
 			else if (added)
 			{
 				hasEnergy = false;
-				MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
-				mr.enabled = true;
+				//MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
+				//mr.enabled = true;
 			}
 			if (hasEnergy && ct.twilight && !lamp.enabled)
 				lamp.enabled = true;
@@ -71,8 +71,7 @@ public class Lighter : MonoBehaviour {
 	}
 
 	void OnGUI()
-	{/*
-		GUI.Label(new Rect(cam.WorldToScreenPoint(transform.position).x,cam,0,30,30),e_icon2d);
+	{
 		if (!pl.isGhost)
 		{
 			if (added && Electricity.GetStatus(ID))
@@ -82,8 +81,13 @@ public class Lighter : MonoBehaviour {
 			else if (added)
 			{
 				hasEnergy = false;
+				Vector3 screenPosition = Camera.current.WorldToScreenPoint(transform.position);
+				screenPosition.y = Screen.height - (screenPosition.y + 1);
+				Rect rect = new Rect(screenPosition.x - 50,
+				                     screenPosition.y - 12, 30, 30);
+				GUI.Label(rect, e_icon2d);
 			}
-		}*/
+		}
 	}
 
 	void SelfDestroy ()

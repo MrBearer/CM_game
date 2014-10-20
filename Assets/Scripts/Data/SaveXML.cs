@@ -6,7 +6,7 @@ using System.Linq;
 
 public class SaveXML : MonoBehaviour {
 
-	//private static Dictionary<int,Vector3> outBsPos = new Dictionary<int,Vector3>();
+	private static Dictionary<int,Vector3> outBsPos = new Dictionary<int,Vector3>();
 	int id;
 	Vector3 pos;
 	
@@ -19,29 +19,29 @@ public class SaveXML : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.S))
 		{
-			XmlDocument xmlDoc = new XmlDocument("Save.xml");
+			XmlDocument xmlDoc = new XmlDocument();
 			XmlNode rootNode = xmlDoc.CreateElement(StringToVector3.makeValidName(gameObject.name));
 			xmlDoc.AppendChild(rootNode);
 			
 			XmlNode outB;
 
-			//foreach (var item in outBsPos)
-			//{
-			XmlAttribute attribute;
-			xmlDoc.AppendChild(rootNode);
+			foreach (var item in outBsPos)
+			{
+				XmlAttribute attribute;
+				xmlDoc.AppendChild(rootNode);
 
-			outB = xmlDoc.CreateElement (StringToVector3.makeValidName(gameObject.name));
-			outB.InnerText = pos.ToString();
+				outB = xmlDoc.CreateElement (StringToVector3.makeValidName(gameObject.name));
+				outB.InnerText = pos.ToString();
 
-			attribute = xmlDoc.CreateAttribute("Type");
-			attribute.Value = "outB";
-			outB.Attributes.Append(attribute);
-			attribute = xmlDoc.CreateAttribute("Id");
-			attribute.Value = id.ToString ();
-			outB.Attributes.Append(attribute);
+				attribute = xmlDoc.CreateAttribute("Type");
+				attribute.Value = "outB";
+				outB.Attributes.Append(attribute);
+				attribute = xmlDoc.CreateAttribute("Id");
+				attribute.Value = id.ToString ();
+				outB.Attributes.Append(attribute);
 
-			rootNode.AppendChild(outB);
-			//}
+				rootNode.AppendChild(outB);
+			}
 
 			xmlDoc.Save("Save.xml");
 		}

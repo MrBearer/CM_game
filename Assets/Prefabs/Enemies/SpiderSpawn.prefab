@@ -13,25 +13,9 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: EnSource
-  m_TagString: CanDestroy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400002}
-  m_Layer: 0
-  m_Name: attackPos
-  m_TagString: CanAttack
+  m_Name: SpiderSpawn
+  m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,23 +27,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.2346458, y: 0, z: 51.3095245}
-  m_LocalScale: {x: 2.54218245, y: 2.54218197, z: 2.54218197}
-  m_Children:
-  - {fileID: 400002}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &400002
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.08369994, y: 3.89969993, z: -.735490024}
-  m_LocalScale: {x: .39336279, y: .39336288, z: .39336288}
+  m_LocalPosition: {x: 34.598999, y: .172859997, z: 60.1650009}
+  m_LocalScale: {x: 4.50632763, y: .308075011, z: 4.15914059}
   m_Children: []
-  m_Father: {fileID: 400000}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2300000
 Renderer:
@@ -95,24 +66,12 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84745e1679865b54387f7620b749c34a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingCameraPivot: {fileID: 0}
---- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -126,7 +85,7 @@ MonoBehaviour:
   direct: 0
   isGhost: 0
   updated: 0
---- !u!114 &11400004
+--- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,10 +93,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a88a6a6030048e41ac8586b38f358ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 864ab9c88b61c7c4085d3a6feda8694e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyGenerated: 50
+  enemy: {fileID: 100004, guid: b9c5d0fa77a973a4ebc3abe600a662d7, type: 2}
+  maxEnemyNum: 8
+  prob: .89999997615814209
+  updateSec: 11
+  offset: {x: 10, y: 0, z: 10}
+  ID: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

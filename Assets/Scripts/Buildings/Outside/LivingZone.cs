@@ -6,6 +6,7 @@ public class LivingZone : MonoBehaviour {
 	int ID;
 	public int energyNeeded;
 	public GameObject e_icon;
+	public Texture2D e_icon2d;
 	bool added;
 	Placing pl;
 	bool hasEnergy;
@@ -30,14 +31,19 @@ public class LivingZone : MonoBehaviour {
 			if (Electricity.GetStatus(ID))
 			{
 				hasEnergy = true;
-				MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
-				mr.enabled = false;
+			//	MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
+			//	mr.enabled = false;
 			}
 			else
 			{
 				hasEnergy = false;
-				MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
-				mr.enabled = true;
+				Vector3 screenPosition = Camera.current.WorldToScreenPoint(transform.position);
+				screenPosition.y = Screen.height - (screenPosition.y + 1);
+				Rect rect = new Rect(screenPosition.x - 50,
+				                     screenPosition.y - 12, 30, 30);
+				GUI.Label(rect, e_icon2d);
+				//MeshRenderer mr = e_icon.GetComponent<MeshRenderer>();
+				//mr.enabled = true;
 			}
 		}
 	}
