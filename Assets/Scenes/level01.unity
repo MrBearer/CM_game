@@ -337,9 +337,9 @@ MonoBehaviour:
       cameraRotationRate: {x: 100, y: 100}
     zoom:
       invertZoom: 0
-      defaultZoom: 15
+      defaultZoom: 25
       minZoom: 10
-      maxZoom: 20
+      maxZoom: 30
       zoomRate: 400
       constZoomRate: 0
 --- !u!114 &176017021
@@ -1266,6 +1266,7 @@ GameObject:
   - 114: {fileID: 1229496450}
   - 154: {fileID: 1229496449}
   - 114: {fileID: 1229496452}
+  - 114: {fileID: 1229496453}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Terrain
@@ -1336,6 +1337,25 @@ MonoBehaviour:
   direct: 0
   isGhost: 0
   updated: 0
+--- !u!114 &1229496453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1229496448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3b6a1abf61fea439f1626aa9eebb07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinDetails: 10
+  MaxDetails: 20
+  PrototypeIndex: 0
+  TestHeightMode: 1
+  cam: {fileID: 666609046}
+  PlaceOnlyOverLevel: 0
+  PlaceOnlyUnderLevel: 0
+  Level: 0
 --- !u!1 &1354634055
 GameObject:
   m_ObjectHideFlags: 0
