@@ -15,6 +15,7 @@ public class Lighter : MonoBehaviour {
 	int ID;
 	bool added;
 	bool saved;
+	SaveXML save;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,7 @@ public class Lighter : MonoBehaviour {
 		added = false;
 		saved = false;
 		cam = GameObject.FindGameObjectWithTag("MainCamera").camera;
+		save = gameObject.GetComponent<SaveXML>();
 	}
 	
 	// Update is called once per frame
@@ -34,7 +36,7 @@ public class Lighter : MonoBehaviour {
 		{
 			if (!saved)
 			{
-				SaveXML.save("outB",ID,transform.position,gameObject);
+				save.save("outB",ID,transform.position);
 				saved = true;
 			}
 			if (!added && ct.twilight)
