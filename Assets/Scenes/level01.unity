@@ -260,6 +260,7 @@ GameObject:
   - 114: {fileID: 176017022}
   - 114: {fileID: 176017024}
   - 114: {fileID: 176017023}
+  - 114: {fileID: 176017025}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: CameraPivot
@@ -337,9 +338,9 @@ MonoBehaviour:
       cameraRotationRate: {x: 100, y: 100}
     zoom:
       invertZoom: 0
-      defaultZoom: 10
-      minZoom: 5
-      maxZoom: 20
+      defaultZoom: 25
+      minZoom: 10
+      maxZoom: 25
       zoomRate: 400
       constZoomRate: 0
 --- !u!114 &176017021
@@ -354,12 +355,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildings:
-  - {fileID: 100030, guid: 7dda25ee708c43b42b8763e0b5aee36e, type: 2}
   - {fileID: 100000, guid: dd81a1c98e8d6374aab5f7c2185cd224, type: 2}
+  - {fileID: 100030, guid: 7dda25ee708c43b42b8763e0b5aee36e, type: 2}
   - {fileID: 100000, guid: b087174335e73db438838c0c39ebc7bc, type: 2}
-  - {fileID: 100002, guid: 94a20bc39b8c0c44aa896db72233de87, type: 2}
   - {fileID: 100000, guid: dbe0b9c11664f804580e0b1254fab512, type: 2}
   - {fileID: 100000, guid: 459627618de1d164898eac56f4e22747, type: 2}
+  - {fileID: 100002, guid: 94a20bc39b8c0c44aa896db72233de87, type: 2}
   offset:
   - {x: 0, y: -.400000006, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -399,6 +400,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11ef4127945149a41a2161155c503289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &176017025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176017018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0457a4a0284c6814c8f30bcc27d20094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &213247252

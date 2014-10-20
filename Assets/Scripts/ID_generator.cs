@@ -7,7 +7,7 @@ public class ID_generator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		id = 0;
+		id = 1;
 	}
 	
 	// Update is called once per frame

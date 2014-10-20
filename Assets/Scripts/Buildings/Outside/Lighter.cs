@@ -14,6 +14,7 @@ public class Lighter : MonoBehaviour {
 	Placing pl;
 	int ID;
 	bool added;
+	bool saved;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class Lighter : MonoBehaviour {
 		lamp.enabled = false;
 		hasEnergy = false;
 		added = false;
+		saved = false;
 		cam = GameObject.FindGameObjectWithTag("MainCamera").camera;
 	}
 	
@@ -30,6 +32,11 @@ public class Lighter : MonoBehaviour {
 	void Update () {
 		if (!pl.isGhost)
 		{
+			if (!saved)
+			{
+				SaveXML.save("outB",ID,transform.position,gameObject);
+				saved = true;
+			}
 			if (!added && ct.twilight)
 			{
 				Electricity.AddConsumer(energyNeeded,ID);
