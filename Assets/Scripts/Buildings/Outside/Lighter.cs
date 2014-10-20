@@ -6,12 +6,15 @@ public class Lighter : MonoBehaviour {
 	public Light lamp;
 	public float maxIntensity;
 	public GameObject e_icon;
+	public Texture2D e_icon2d;
 	public int energyNeeded;
 	public bool hasEnergy;
+	Camera cam;
 	CurTime ct;
 	Placing pl;
 	int ID;
 	bool added;
+	bool saved;
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +24,19 @@ public class Lighter : MonoBehaviour {
 		lamp.enabled = false;
 		hasEnergy = false;
 		added = false;
+		saved = false;
+		cam = GameObject.FindGameObjectWithTag("MainCamera").camera;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (!pl.isGhost)
 		{
+			if (!saved)
+			{
+				SaveXML.save("outB",ID,transform.position,gameObject);
+				saved = true;
+			}
 			if (!added && ct.twilight)
 			{
 				Electricity.AddConsumer(energyNeeded,ID);
@@ -56,6 +66,22 @@ public class Lighter : MonoBehaviour {
 			if (!ct.twilight && lamp.enabled)
 				lamp.enabled = false;
 		}
+	}
+
+	void OnGUI()
+	{/*
+		GUI.Label(new Rect(cam.WorldToScreenPoint(transform.position).x,cam,0,30,30),e_icon2d);
+		if (!pl.isGhost)
+		{
+			if (added && Electricity.GetStatus(ID))
+			{
+				hasEnergy = true;
+			}
+			else if (added)
+			{
+				hasEnergy = false;
+			}
+		}*/
 	}
 
 	void SelfDestroy ()
