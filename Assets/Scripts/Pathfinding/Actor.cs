@@ -11,7 +11,7 @@ public class Actor : MonoBehaviour {
 	}
 	
 	float m_speed;
-	float m_speed_multi = 5;
+	float m_speed_multi = 0.1f;
 	public bool DebugMode;
 	
 	bool onNode = true;
@@ -24,11 +24,14 @@ public class Actor : MonoBehaviour {
 	float OldTime = 0;
 	float checkTime = 0;
 	float elapsedTime = 0;
+
+    Animator animator;
 	
 	void Awake()
 	{
 		GameObject cam = GameObject.FindGameObjectWithTag("CameraPivot");
 		control = (NodeControl)cam.GetComponent(typeof(NodeControl));
+        animator = (Animator)GetComponent<Animator>();
 	}
 	
 	void Update () 
@@ -41,9 +44,11 @@ public class Actor : MonoBehaviour {
 			switch (state)
 			{
 			case State.IDLE:
+                animator.SetBool("isWalking", false);
 				break;
-				
-			case State.MOVING:
+
+            case State.MOVING:
+                animator.SetBool("isWalking", true);
 				OldTime = elapsedTime + 0.01f;
 
 				if (elapsedTime > checkTime)
@@ -57,6 +62,8 @@ public class Actor : MonoBehaviour {
 					if (onNode)
 					{
 						onNode = false;
+
+                        transform.LookAt(path[nodeIndex]);
 						if (nodeIndex < path.Count)
 							currNode = path[nodeIndex];
 					} else
@@ -83,12 +90,12 @@ public class Actor : MonoBehaviour {
 		if (Xdistance < 0) Xdistance -= Xdistance*2;
 		float Ydistance = newPos.z - currNode.z;
 		if (Ydistance < 0) Ydistance -= Ydistance*2;
-	
-		if ((Xdistance < 0.1 && Ydistance < 0.1) && m_target == currNode) //Reached target
+
+		if ((Xdistance < 0.5 && Ydistance < 0.5) && m_target == currNode) //Reached target
 		{
 			ChangeState(State.IDLE);
 		}
-		else if (Xdistance < 0.1 && Ydistance < 0.1)
+		else if (Xdistance < 0.5 && Ydistance < 0.5)
 		{
 			nodeIndex++;
 			onNode = true;
@@ -105,6 +112,7 @@ public class Actor : MonoBehaviour {
 	private void SetTarget()
     {
 		path = control.Path(transform.position, m_target);
+
         //Debug.Log(path);
 		nodeIndex = 0;
 		onNode = true;

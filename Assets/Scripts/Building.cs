@@ -22,6 +22,11 @@ public class Building : MonoBehaviour {
 		bMode = 0;
 	}
 
+    public GameObject[] GetBuildings()
+    {
+        return buildings;
+    }
+
 	// Update is called once per frame
 	void Update () {
 		if (isSelected)
@@ -68,6 +73,29 @@ public class Building : MonoBehaviour {
 			grid = !grid;
 	}
 
+    public void Select(int id)
+    {
+        item = id;
+        if (id == -1)
+        {
+            bMode = 2;
+            if (isSelected)
+            {
+                isSelected = false;
+                Destroy(ghost);
+            }
+            return;
+        }
+        isSelected = true;
+        bMode = 1;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            ghost = (GameObject)Instantiate(buildings[item], hit.point + offset[item], Quaternion.identity);
+        }
+    }
+    /*
 	void OnGUI ()
 	{
 		int i = 0;
@@ -97,7 +125,7 @@ public class Building : MonoBehaviour {
 			}
 		}
 	}
-
+    */
 	void Colliding (bool enter)
 	{
 		if (enter)

@@ -78,6 +78,6 @@ public class Electricity : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Box(new Rect(10, Screen.height - 50, 200, 30), "Energy: " + supply + "/" + income);
+		GUI.Box(new Rect(10, 50, 200, 30), "Energy: " + supply + "/" + income);
 	}
 }

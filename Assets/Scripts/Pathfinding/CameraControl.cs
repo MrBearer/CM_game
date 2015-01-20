@@ -35,8 +35,7 @@ public class CameraControl : MonoBehaviour {
 				{
 					float X = hit.point.x;
 					float Z = hit.point.z;
-					Vector3 target = new Vector3(X, actor.transform.position.y, Z);
-
+					Vector3 target = new Vector3(X, 0.1f, Z);
 					actorScript.MoveOrder(target);
 				}
 			}
