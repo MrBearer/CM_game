@@ -15,12 +15,14 @@ public class ColliderMessenger : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
-		buildingCameraPivot.gameObject.SendMessage("Colliding", true);
+        if (other.tag != "Terrain")
+		    buildingCameraPivot.gameObject.SendMessage("Colliding", true);
 		//Debug.Log(other.name);
 	}
 	
 	void OnTriggerExit(Collider other) {
-		buildingCameraPivot.gameObject.SendMessage("Colliding", false);
+        if (other.tag != "Terrain")
+		    buildingCameraPivot.gameObject.SendMessage("Colliding", false);
 	}
 
 }

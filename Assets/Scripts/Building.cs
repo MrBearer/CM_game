@@ -24,7 +24,6 @@ public class Building : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log(colliding);
 		if (isSelected)
 		{
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -74,14 +73,14 @@ public class Building : MonoBehaviour {
 		int i = 0;
 		foreach (GameObject bld in buildings)
 		{
-			if (GUI.Button(new Rect(10+i*90, 10, 80, 30), bld.gameObject.name.ToString()))
+			if (GUI.Button(new Rect(10+i*90, 10, 80, 30), bld.gameObject.name))
 			{
 				item = i;
 				isSelected = true;
 				bMode = 1;
 				Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
-				if(Physics.Raycast(ray,out hit))
+				if(Physics.Raycast(ray, out hit))
 				{
 					ghost = (GameObject)Instantiate(buildings[item],hit.point + offset[item],Quaternion.identity);
 				}
@@ -105,6 +104,6 @@ public class Building : MonoBehaviour {
 			colliding++;
 		else
 			colliding--;
-		//Debug.Log(colliding);
+		Debug.Log(colliding);
 	}
 }

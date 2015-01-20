@@ -10,6 +10,7 @@ public class LivingZone : MonoBehaviour {
 	bool added;
 	Placing pl;
 	bool hasEnergy;
+	Camera cam;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class LivingZone : MonoBehaviour {
 		pl = gameObject.GetComponent<Placing>();
 		ID = ID_generator.generate_ID();
 		hasEnergy = false;
+		cam = GameObject.FindGameObjectWithTag("MainCamera").camera;
 	}
 	
 	// Update is called once per frame
@@ -37,7 +39,7 @@ public class LivingZone : MonoBehaviour {
 			else
 			{
 				hasEnergy = false;
-				Vector3 screenPosition = Camera.current.WorldToScreenPoint(transform.position);
+				Vector3 screenPosition = cam.WorldToScreenPoint(transform.position);
 				screenPosition.y = Screen.height - (screenPosition.y + 1);
 				Rect rect = new Rect(screenPosition.x - 50,
 				                     screenPosition.y - 12, 30, 30);

@@ -31,16 +31,10 @@ public class Spawn : MonoBehaviour {
 				if (Random.value < prob && numOfEnemies < maxEnemyNum)
 				{
 					GameObject newEnemy = (GameObject)Instantiate(enemy,new Vector3(transform.position.x,transform.position.y + 5,transform.position.z),Quaternion.identity);
-					GameObject target = GameObject.FindGameObjectWithTag("Target");
-					Debug.Log(target.tag);
-					target.tag = "Untagged";
-					Debug.Log(target.tag);
-					target.transform.parent = null;
-					target.transform.position = transform.position + new Vector3(Random.Range(-offset.x, offset.x), Random.Range(0, offset.y), Random.Range(-offset.z, offset.z));
 					EnemyAI ai;
 					ai = newEnemy.GetComponent<EnemyAI>();
-					ai.spawnID = ID;
-					//ai.enabled = true;
+					ai.mySpawnID = ID;
+					ai.SetTarget(transform.position + new Vector3(Random.Range(-offset.x, offset.x), Random.Range(0, offset.y), Random.Range(-offset.z, offset.z)));
 					numOfEnemies++;
 				}
 			}

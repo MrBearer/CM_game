@@ -15,7 +15,7 @@ public class Placing : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {/*
 		if(!updated && !isGhost)
 		{
 			Collider[] cl = transform.GetComponentsInChildren<Collider>();
@@ -24,6 +24,17 @@ public class Placing : MonoBehaviour {
 				AstarPath.active.UpdateGraphs(new GraphUpdateObject(ecl.bounds));
 			}
 			updated = true;
-		}
+		}*/
 	}
+
+    void SelfDestroy()
+    {
+        Destroy(gameObject);/*
+        Collider[] cl = transform.GetComponentsInChildren<Collider>();
+        foreach (Collider ecl in cl)
+        {
+            AstarPath.active.UpdateGraphs(new GraphUpdateObject(ecl.bounds),1);
+        }*/
+        updated = true;
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Pathfinding;
 
 public class Health : MonoBehaviour {
 
@@ -7,6 +8,7 @@ public class Health : MonoBehaviour {
 	int curHealth;
 	Vector3 screenPosition;
 	Camera cam;
+	public GameObject toDestroy;
 	// Use this for initialization
 	void Start () {
 		curHealth = maxHealth;
@@ -16,7 +18,14 @@ public class Health : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(curHealth <= 0)
-			Destroy(gameObject);
+		{
+			Destroy(toDestroy);
+            Collider[] cl = toDestroy.transform.GetComponentsInChildren<Collider>();
+            foreach (Collider ecl in cl)
+            {
+                AstarPath.active.UpdateGraphs(new GraphUpdateObject(ecl.bounds), 1);
+            }
+		}
 	}
 
 	void OnGUI ()
