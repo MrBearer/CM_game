@@ -14,6 +14,11 @@ public class Health : MonoBehaviour {
 		curHealth = maxHealth;
 		cam = GameObject.FindGameObjectWithTag("MainCamera").camera;
 	}
+
+    public int getHealth()
+    {
+        return curHealth;
+    }
 	
 	// Update is called once per frame
 	void Update () {

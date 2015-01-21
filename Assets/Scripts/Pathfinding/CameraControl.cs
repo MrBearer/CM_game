@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CameraControl : MonoBehaviour {
 	
@@ -8,6 +9,8 @@ public class CameraControl : MonoBehaviour {
 	
 	public GameObject actor;
 	public string floorTag;
+    public string characterTag;
+    public GameObject characterMenu;
 
 	Actor actorScript;
 	
@@ -38,6 +41,14 @@ public class CameraControl : MonoBehaviour {
 					Vector3 target = new Vector3(X, 0.1f, Z);
 					actorScript.MoveOrder(target);
 				}
+                else if (hit.transform.tag == characterTag)
+                {
+                    Canvas canvas = (Canvas)characterMenu.GetComponent<Canvas>();
+                    canvas.enabled = true;
+                    CharacterMenu cm = (CharacterMenu)characterMenu.GetComponent<CharacterMenu>();
+                    cm.selected = true;
+                    hit.transform.tag = "selectedCharacter";
+                }
 			}
 		}
 	}

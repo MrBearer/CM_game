@@ -11,7 +11,7 @@ public class Actor : MonoBehaviour {
 	}
 	
 	float m_speed;
-	float m_speed_multi = 0.1f;
+    public float m_speed_multi = 0.1f;
 	public bool DebugMode;
 	
 	bool onNode = true;
@@ -44,11 +44,13 @@ public class Actor : MonoBehaviour {
 			switch (state)
 			{
 			case State.IDLE:
-                animator.SetBool("isWalking", false);
+                if (animator != null)
+                    animator.SetBool("isWalking", false);
 				break;
 
             case State.MOVING:
-                animator.SetBool("isWalking", true);
+                if (animator != null)
+                    animator.SetBool("isWalking", true);
 				OldTime = elapsedTime + 0.01f;
 
 				if (elapsedTime > checkTime)

@@ -18,6 +18,9 @@ TagManager:
   - empty
   - floor
   - node
+  - thumb
+  - Character
+  - selectedCharacter
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

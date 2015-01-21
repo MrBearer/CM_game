@@ -5,15 +5,21 @@ using UnityEngine.UI;
 public class ButtonID : MonoBehaviour {
 
     public int id;
+    public GameObject modeMenu;
 
 	// Use this for initialization
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(() => Select());
+        if (id >= -1)
+            GetComponent<Button>().onClick.AddListener(() => Select());
+        else
+            GetComponent<Button>().onClick.AddListener(() => Mode());
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+
 	}
 
     void Select()
@@ -21,4 +27,11 @@ public class ButtonID : MonoBehaviour {
         GameObject.FindGameObjectWithTag("CameraPivot").GetComponent<Building>().Select(id);
     }
 
+    void Mode()
+    {
+        if (id == -2)
+        {
+            modeMenu.GetComponent<Canvas>().enabled = !modeMenu.GetComponent<Canvas>().enabled;
+        }
+    }
 }
